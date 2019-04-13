@@ -42,8 +42,8 @@ In addition, please add the project folder to PYTHONPATH and `pip install` the f
 
 **Training**
 - The steps to train a StackGAN model on the CUB dataset using our preprocessed data for birds.
-  - Step 1: train Stage-I GAN (e.g., for 600 epochs) `python stageI/run_exp.py --cfg stageI/cfg/birds.yml --gpu 0`
-  - Step 2: train Stage-II GAN (e.g., for another 600 epochs) `python stageII/run_exp.py --cfg stageII/cfg/birds.yml --gpu 1`
+  - Step 1: train Stage-I GAN (e.g., for 600 epochs) `python -m  stageI/run_exp --cfg stageI/cfg/birds.yml --gpu 0`
+  - Step 2: train Stage-II GAN (e.g., for another 600 epochs) `python -m stageII/run_exp --cfg stageII/cfg/birds.yml --gpu 1`
 - Change `birds.yml` to `flowers.yml` to train a StackGAN model on Oxford-102 dataset using our preprocessed data for flowers.
 - `*.yml` files are example configuration files for training/testing our models.
 - If you want to try your own datasets, [here](https://github.com/soumith/ganhacks) are some good tips about how to train GAN. Also, we encourage to try different hyper-parameters and architectures, especially for more complex datasets.
@@ -100,3 +100,6 @@ booktitle = {{ICCV}},
 
 - Generative Adversarial Text-to-Image Synthesis [Paper](https://arxiv.org/abs/1605.05396) [Code](https://github.com/reedscot/icml2016)
 - Learning Deep Representations of Fine-grained Visual Descriptions [Paper](https://arxiv.org/abs/1605.05395) [Code](https://github.com/reedscot/cvpr2016)
+
+**Docker**
+nvidia-docker run -it -v $(pwd):/notebooks -v ~:/root --name tf-gpu-0.12  tensorflow/tensorflow:0.12.0-gpu bash

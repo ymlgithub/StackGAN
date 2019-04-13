@@ -301,6 +301,8 @@ class CondGANTrainer(object):
 
     def train(self):
         config = tf.ConfigProto(allow_soft_placement=True)
+        config.gpu_options.allow_growth=True
+        # config.gpu_options.per_process_gpu_memory_fraction = 0.5
         with tf.Session(config=config) as sess:
             with tf.device("/gpu:%d" % cfg.GPU_ID):
                 counter = self.build_model(sess)
@@ -437,6 +439,7 @@ class CondGANTrainer(object):
 
     def evaluate(self):
         config = tf.ConfigProto(allow_soft_placement=True)
+        config.gpu_options.per_process_gpu_memory_fraction = 0.3 
         with tf.Session(config=config) as sess:
             with tf.device("/gpu:%d" % cfg.GPU_ID):
                 if self.model_path.find('.ckpt') != -1:
