@@ -6,10 +6,9 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-import scipy.misc
+import scipy
 import os
 import errno
-
 
 def get_image(image_path, image_size, is_crop=False, bbox=None):
     global index
